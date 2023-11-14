@@ -1,5 +1,4 @@
-package src.test.java.br.com.danilo;
-
+package br.com.danilo;
 
 import static io.restassured.RestAssured.given;
 
