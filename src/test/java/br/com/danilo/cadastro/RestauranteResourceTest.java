@@ -1,4 +1,4 @@
-package br.com.danilo;
+package br.com.danilo.cadastro;
 
 import static io.restassured.RestAssured.given;
 

@@ -1,4 +1,4 @@
-package br.com.danilo;
+package br.com.danilo.cadastro;
 
 import java.util.HashMap;
 import java.util.Map;
