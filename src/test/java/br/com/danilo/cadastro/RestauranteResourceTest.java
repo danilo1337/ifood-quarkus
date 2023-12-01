@@ -16,15 +16,16 @@ import io.quarkus.test.junit.QuarkusTest;
 @QuarkusTestResource(CadastroTestLifeCycleManager.class)
 public class RestauranteResourceTest {
 
-    @Test
-    @DataSet("restaurantes-cenario-1.yml")
-    public void testBuscarRestaurantes() {
-        String resultado = given()
-                .when().get("/restaurantes")
-                .then()
-                .statusCode(200)
-                .extract().asString();
-        Approvals.verifyJson(resultado);
-    }
+	@Test
+	@DataSet("restaurantes-cenario-1.yml")
+	public void testBuscarRestaurantes() {
+		String resultado = given()
+				.when().get("/restaurantes")
+				.then()
+				.statusCode(200)
+				.extract().asString();
+		System.out.println(resultado);
+		Approvals.verifyJson(resultado);
+	}
 
 }
