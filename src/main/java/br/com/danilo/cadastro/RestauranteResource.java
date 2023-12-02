@@ -5,6 +5,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import br.com.danilo.cadastro.dto.AdicionarPratoDTO;
@@ -14,8 +17,10 @@ import br.com.danilo.cadastro.dto.PratoDTO;
 import br.com.danilo.cadastro.dto.PratoMapper;
 import br.com.danilo.cadastro.dto.RestauranteDTO;
 import br.com.danilo.cadastro.dto.RestauranteMapper;
+import br.com.danilo.cadastro.infra.ConstraintViolationResponse;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -49,7 +54,9 @@ public class RestauranteResource {
 
     @POST
     @Transactional
-    public Response adiicionar(AdicionarRestauranteDTO dto) {
+    @APIResponse(responseCode = "201", description = "Caso restaurante seja cadastrado com sucesso")
+    @APIResponse(responseCode = "400", content = @Content(schema = @Schema(allOf = ConstraintViolationResponse.class)))
+    public Response adiicionar(@Valid AdicionarRestauranteDTO dto) {
     	Restaurante restaurante = restauranteMapper.toRestaurante(dto);
     	restaurante.persist();
         return Response.status(Status.CREATED).build();
