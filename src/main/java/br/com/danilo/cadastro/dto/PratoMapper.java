@@ -10,7 +10,7 @@ public interface PratoMapper {
 	
 	Prato toPrato(AdicionarPratoDTO dto);
 	
-	void toPrato(AdicionarPratoDTO dto, @MappingTarget Prato prato);
+	void toPrato(AtualizarPratoDTO dto, @MappingTarget Prato prato);
 	
 	PratoDTO toDTO(Prato prato);
 	

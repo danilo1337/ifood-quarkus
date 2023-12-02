@@ -9,6 +9,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import br.com.danilo.cadastro.dto.AdicionarPratoDTO;
 import br.com.danilo.cadastro.dto.AdicionarRestauranteDTO;
+import br.com.danilo.cadastro.dto.AtualizarPratoDTO;
 import br.com.danilo.cadastro.dto.PratoDTO;
 import br.com.danilo.cadastro.dto.PratoMapper;
 import br.com.danilo.cadastro.dto.RestauranteDTO;
@@ -122,7 +123,7 @@ public class RestauranteResource {
     @Path("{idRestaurante}/pratos/{id}")
     @Tag(name = "prato")
     @Transactional
-    public void atualizarPrato(@PathParam("idRestaurante") Long idRestaurante, @PathParam("id") Long id, AdicionarPratoDTO dto) {
+    public void atualizarPrato(@PathParam("idRestaurante") Long idRestaurante, @PathParam("id") Long id, AtualizarPratoDTO dto) {
 
         Optional<Restaurante> restauranteOp = Restaurante.findByIdOptional(idRestaurante);
 
